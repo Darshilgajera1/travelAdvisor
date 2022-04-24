@@ -22,14 +22,14 @@ const App = () => {
 	useEffect(() => {
 		if(navigator.geolocation){
 			navigator.permissions.query({name : "geolocation"}).then(function(result){
-				if(result.state == "granted"){
+				if(result.state === "granted"){
 					console.log(result.state);
 					navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
 						setCoordinates({lat:latitude, lng:longitude});
 					})
-				}else if(result.state == "prompt"){
+				}else if(result.state === "prompt"){
 					console.log(result.state)
-				}else if(result.state == "denied"){
+				}else if(result.state === "denied"){
 					alert('please open your location');
 				}
 			})
